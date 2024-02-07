@@ -19,7 +19,7 @@ public class PhoneBook {
     void addContact(String firstName, String lastName, long phoneNumber, String address) {
         String key = getFormattedKey(phoneNumber);
         if (listOfContacts.containsKey(key)) {
-            System.out.println("Contact is already exist");
+            System.out.println("Contact already exists");
             return;
         }
         listOfContacts.put(key, new Contact(firstName, lastName, phoneNumber, address));
@@ -46,12 +46,12 @@ public class PhoneBook {
             System.out.println("Contact was deleted");
             return;
         }
-        System.out.println("Contact doest not exist");
+        System.out.println("Contact does not exist");
     }
 
     void printContact(long phoneNumber) {
         String key = getFormattedKey(phoneNumber);
-        String text = listOfContacts.containsKey(key) ? listOfContacts.get(key).toString() : "Contact doest not exist";
+        String text = listOfContacts.containsKey(key) ? listOfContacts.get(key).toString() : "Contact does not exist";
         System.out.println(text);
     }
 
@@ -60,11 +60,11 @@ public class PhoneBook {
             System.out.println("Phone book is empty");
             return;
         }
-        System.out.println("*** Phone contacts: ***");
+        System.out.println("*** Contacts: ***");
         for (Contact contact : listOfContacts.values()) {
             System.out.print("* ");
             System.out.println(contact);
         }
-        System.out.println("*** End of contacts ***");
+        System.out.println("*** End of Phonebook ***");
     }
 }

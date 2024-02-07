@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("Welcome to Phonebook");
         while (isPlay) {
-            System.out.println("Please choose desired command by inputting one of the following letter:");
+            System.out.println("Please choose desired command by inputting one of the following letters:");
             System.out.println("C - create, E - edit, D - delete, I - print one contact, P - print whole list of contacts, F - close program");
             inputStr = sc.nextLine().trim();
             switch(inputStr.toUpperCase()) {
@@ -73,7 +73,7 @@ public class Main {
                     phoneBook.printAllContacts();
                     break;
                 case "F": isPlay = false; break;
-                default: System.out.println("! Wrong command is input. Please try again"); break;
+                default: System.out.println("! Wrong command was input. Please try again"); break;
             }
         }
         System.out.println("App is closed");
