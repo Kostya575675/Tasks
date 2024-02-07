@@ -1,1 +1,1 @@
-# Tasks
+# Tasks of "Java for QAs" project
