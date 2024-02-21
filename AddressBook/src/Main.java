@@ -1,22 +1,18 @@
-import orq.qa.phonebook.ContactField;
-import orq.qa.phonebook.PhoneBook;
-import orq.qa.phonebook.Contact;
-
 import java.util.*;
 
 
 
 public class Main {
 
-    private static String getValidTextByContactField(ContactField contactField) {
-        Scanner scanner = new Scanner(System.in);
+    private static String getValidTextByContactField(Scanner scanner, ContactField contactField) {
         String inputText = null;
         System.out.println("Input "+contactField);
         while(true) {
-            inputText = scanner.nextLine();
-            if (inputText.matches(contactField.getRegexExpression())) return inputText;
+            inputText = scanner.nextLine().trim();
+            if (inputText.matches(contactField.getRegexExpression())) break;
             System.out.println("! "+contactField.getErrorMessage()+ " Please try again.");
         }
+        return inputText;
     }
 
     public static void main(String[] args) {
@@ -34,7 +30,7 @@ public class Main {
             switch(inputStr.toUpperCase()) {
                 case "C":
                     for (ContactField contactField : ContactField.values()) {
-                        inputStr = getValidTextByContactField(contactField);
+                        inputStr = getValidTextByContactField(sc, contactField);
                         correctInputData.put(contactField, inputStr);
                     }
                     phoneBook
@@ -46,11 +42,11 @@ public class Main {
                             );
                     break;
                 case "E":
-                    inputStr = getValidTextByContactField(ContactField.PHONE_NUMBER);
+                    inputStr = getValidTextByContactField(sc, ContactField.PHONE_NUMBER);
                     if (phoneBook.isContactExist(Long.parseLong(inputStr))) {
                         correctInputData.put(ContactField.PHONE_NUMBER, inputStr);
                         for (ContactField contactField : Arrays.asList(ContactField.FIRST_NAME, ContactField.LAST_NAME, ContactField.ADDRESS)) {
-                            inputStr = getValidTextByContactField(contactField);
+                            inputStr = getValidTextByContactField(sc, contactField);
                             correctInputData.put(contactField, inputStr);
                         }
                         phoneBook
@@ -66,19 +62,17 @@ public class Main {
                     }
                     break;
                 case "D":
-                    inputStr = getValidTextByContactField(ContactField.PHONE_NUMBER);
+                    inputStr = getValidTextByContactField(sc, ContactField.PHONE_NUMBER);
                     phoneBook.deleteContact(Long.parseLong(inputStr));
                     break;
                 case "I":
-                    inputStr = getValidTextByContactField(ContactField.PHONE_NUMBER);
+                    inputStr = getValidTextByContactField(sc, ContactField.PHONE_NUMBER);
                     phoneBook.printContact(Long.parseLong(inputStr));
                     break;
                 case "P":
                     phoneBook.printAllContacts();
                     break;
-                case "F":
-                    isPlay = false;
-                    break;
+                case "F": isPlay = false; break;
                 default: System.out.println("! Wrong command was input. Please try again"); break;
             }
         }
