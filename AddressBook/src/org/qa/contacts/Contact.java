@@ -1,3 +1,5 @@
+package org.qa.contacts;
+
 public class Contact {
     private String firstName;
     private String lastName;
@@ -34,6 +36,7 @@ public class Contact {
         address = _address;
     }
 
+    @Override
     public String toString() {
         return "Name: "+firstName+". Surname: "+lastName+". Phone number: "+phoneNumber+". Address: "+address+".";
     }

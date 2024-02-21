@@ -1,3 +1,5 @@
+package org.qa.contacts;
+
 public enum ContactField {
     FIRST_NAME("First name", "[a-zA-Z_]+", "Only letters are required."),
     LAST_NAME("Last name", "[a-zA-Z_]+", "Only letters are required."),
@@ -22,6 +24,7 @@ public enum ContactField {
         return errorMessage;
     }
 
+    @Override
     public String toString() {
         return name;
     }
