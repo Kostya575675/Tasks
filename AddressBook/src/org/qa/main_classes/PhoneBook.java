@@ -1,4 +1,4 @@
-package org.qa.contacts;
+package org.qa.main_classes;
 
 import java.util.HashMap;
 import java.util.Map;

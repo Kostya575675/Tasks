@@ -1,4 +1,4 @@
-import org.qa.contacts.PhoneBook;
+import org.qa.main_classes.PhoneBook;
 import org.qa.helpers.Helper;
 
 import java.util.*;

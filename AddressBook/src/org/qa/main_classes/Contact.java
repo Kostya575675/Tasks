@@ -1,4 +1,4 @@
-package org.qa.contacts;
+package org.qa.main_classes;
 
 public class Contact {
     private String firstName;

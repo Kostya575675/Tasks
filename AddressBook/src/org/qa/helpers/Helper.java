@@ -1,6 +1,6 @@
 package org.qa.helpers;
 
-import org.qa.contacts.PhoneBook;
+import org.qa.main_classes.PhoneBook;
 
 import java.util.Arrays;
 import java.util.HashMap;
