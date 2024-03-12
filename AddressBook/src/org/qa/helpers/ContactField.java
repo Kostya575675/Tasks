@@ -1,4 +1,4 @@
-package org.qa.contacts;
+package org.qa.helpers;
 
 public enum ContactField {
     FIRST_NAME("First name", "[a-zA-Z_]+", "Only letters are required."),
@@ -8,7 +8,7 @@ public enum ContactField {
 
     private final String name;
     private final String regexExpression;
-    private  final  String errorMessage;
+    private final String errorMessage;
 
     private ContactField(String _name, String _regexExpression, String _errorMessage) {
         name = _name;

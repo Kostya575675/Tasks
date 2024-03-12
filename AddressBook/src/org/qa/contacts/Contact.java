@@ -12,6 +12,7 @@ public class Contact {
         phoneNumber = _phoneNumber;
         address = _address;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -20,7 +21,7 @@ public class Contact {
         return lastName;
     }
 
-    public  String getAddress() {
+    public String getAddress() {
         return address;
     }
 
@@ -38,6 +39,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Name: "+firstName+". Surname: "+lastName+". Phone number: "+phoneNumber+". Address: "+address+".";
+        return "Name: " + firstName + ". Surname: " + lastName + ". Phone number: " + phoneNumber + ". Address: " + address + ".";
     }
 }

@@ -1,72 +1,69 @@
 package org.qa.contacts;
+
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class PhoneBook {
-    private final Map<String, Contact> listOfContacts;
-
-    public PhoneBook() {
-        listOfContacts = new HashMap<>();
-    }
+    private final Map<String, Contact> contacts = new HashMap<>();
 
     private String getFormattedKey(long data) {
-        return "#"+data;
+        return "#" + data;
     }
 
     public boolean isContactExist(long data) {
-        return listOfContacts.containsKey(getFormattedKey(data));
+        return contacts.containsKey(getFormattedKey(data));
     }
 
     public void addContact(String firstName, String lastName, long phoneNumber, String address) {
         String key = getFormattedKey(phoneNumber);
-        if (listOfContacts.containsKey(key)) {
-            System.out.println("org.qa.contacts.Contact already exists");
+        if (contacts.containsKey(key)) {
+            System.out.println("Contact already exists");
             return;
         }
-        listOfContacts.put(key, new Contact(firstName, lastName, phoneNumber, address));
-        System.out.println("org.qa.contacts.Contact was added");
+        contacts.put(key, new Contact(firstName, lastName, phoneNumber, address));
+        System.out.println("Contact was added");
     }
 
     public void editContact(String firstName, String lastName, long phoneNumber, String address) {
         String key = getFormattedKey(phoneNumber);
-        if (listOfContacts.containsKey(key)) {
-            Contact contact = listOfContacts.get(key);
+        if (contacts.containsKey(key)) {
+            Contact contact = contacts.get(key);
             contact.setFirstName(firstName.isEmpty() ? contact.getFirstName() : firstName);
             contact.setLastName(lastName.isEmpty() ? contact.getLastName() : lastName);
             contact.setAddress(address.isEmpty() ? contact.getAddress() : address);
-            System.out.println("org.qa.contacts.Contact was edited");
+            System.out.println("Contact was edited");
             return;
         }
-        System.out.println("org.qa.contacts.Contact does not exist");
+        System.out.println("Contact does not exist");
     }
 
     public void deleteContact(long phoneNumber) {
         String key = getFormattedKey(phoneNumber);
-        if (listOfContacts.containsKey(key)) {
-            listOfContacts.remove(key);
-            System.out.println("org.qa.contacts.Contact was deleted");
+        if (contacts.containsKey(key)) {
+            contacts.remove(key);
+            System.out.println("Contact was deleted");
             return;
         }
-        System.out.println("org.qa.contacts.Contact does not exist");
+        System.out.println("Contact does not exist");
     }
 
     public void printContact(long phoneNumber) {
         String key = getFormattedKey(phoneNumber);
-        String text = listOfContacts.containsKey(key) ? listOfContacts.get(key).toString() : "org.qa.contacts.Contact does not exist";
+        String text = contacts.containsKey(key) ? contacts.get(key).toString() : "Contact does not exist";
         System.out.println(text);
     }
 
     public void printAllContacts() {
-        if (listOfContacts.isEmpty()) {
-            System.out.println("Phone book is empty");
+        if (contacts.isEmpty()) {
+            System.out.println("Contact book is empty");
             return;
         }
         System.out.println("*** Contacts: ***");
-        for (Contact contact : listOfContacts.values()) {
+        for (Contact contact : contacts.values()) {
             System.out.print("* ");
             System.out.println(contact);
         }
-        System.out.println("*** End of Phonebook ***");
+        System.out.println("*** End of Contact book ***");
     }
 }
